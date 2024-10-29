@@ -1,0 +1,89 @@
+/* Home.css */
+.home-container {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  padding: 20px; /* Add some padding to the container */
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  width: 100%; /* Ensure full width for alignment */
+  max-width: 1200px; /* Set a max width if desired */
+  margin-top: 20px; /* Space between input and cards */
+  animation: slideIn 0.5s forwards;
+}
+
+/* Custom Input styles */
+.custom-input-container {
+  display: flex;
+  align-items: center;
+  background-color: #d1d1d1; /* Darker gray for the input background */
+  border-radius: 30px;
+  padding: 0.5rem 1rem;
+  width: 50vw; /* 50% of the viewport width */
+  margin: 20px auto; /* Center input with margin from cards */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Initial subtle shadow */
+  transition: box-shadow 0.3s ease; /* Smooth transition for shadow */
+
+  /* Positioning */
+  position: fixed; /* Fixed position at bottom */
+  bottom: 60px; /* Adjust distance from bottom as needed */
+  left: 25vw; /* Starts 25% from the left of the viewport */
+  z-index: 1000; /* Ensures it stays on top */
+}
+
+.custom-input-container:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+}
+
+.attachment-icon {
+  font-size: 1.2rem;
+  color: #5a5a5a; /* Slightly darker gray for the icon */
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
+.custom-input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: #333; /* Darker text for readability */
+  font-size: 1rem;
+}
+
+.custom-input::placeholder {
+  color: #7a7a7a; /* Darker gray placeholder */
+}
+
+.send-button {
+  background: none;
+  border: none;
+  color: #5a5a5a; /* Matches icon color */
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding-left: 0.5rem;
+}
+
+.send-button:hover {
+  color: #005b99; /* Darker blue for hover effect */
+}
+
+.attachment-icon:hover {
+  color: #005b99; /* Matches send button hover */
+}
+
+/* Slide-in animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

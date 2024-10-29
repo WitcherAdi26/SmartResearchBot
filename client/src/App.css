@@ -1,0 +1,61 @@
+/* App.css */
+
+/* Body styling for light and dark modes */
+body {
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+body.light-mode {
+  background-color: #ffffff; /* Light mode background */
+  color: #000000; /* Light mode text color */
+}
+
+body.dark-mode {
+  background-color: #121212; /* Dark mode background */
+  color: #ffffff; /* Dark mode text color */
+}
+
+/* Styles for the App component */
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the app takes full height */
+}
+
+/* Styles for the Navbar */
+.Navbar {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for navbar */
+}
+
+/* Content area styling */
+.content {
+  flex: 1; /* Allow the content area to grow and fill space */
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  padding: 2rem; /* Padding around content */
+}
+
+/* Custom input styling */
+.CustomInput {
+  position: fixed; /* Fixed position */
+  bottom: 20px; /* Distance from bottom */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust for the width of the input */
+  width: 50%; /* Set width to 50% */
+}
+
+/* Additional styles for dark mode */
+.dark-mode .Navbar {
+  background-color: #1f1f1f; /* Darker navbar for dark mode */
+  color: #e0e0e0; /* Light text for dark mode */
+}
+
+/* Additional styles for light mode */
+.light-mode .Navbar {
+  background-color: #f8f9fa; /* Lighter navbar for light mode */
+  color: #333; /* Dark text for light mode */
+}

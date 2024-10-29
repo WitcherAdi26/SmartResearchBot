@@ -1,0 +1,61 @@
+/* Navbar.css */
+nav {
+  padding: 10px 20px; /* Padding for the navbar */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.light-mode {
+  background-color: #f8f9fa; /* Light background color for the navbar */
+}
+
+.dark-mode {
+  background-color: #333; /* Dark background color for the navbar */
+}
+
+.navbar-list {
+  list-style-type: none; /* Remove bullet points */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  display: flex; /* Use flexbox to display items in a row */
+  justify-content: space-between; /* Space items evenly between left and right */
+}
+
+.navbar-left,
+.navbar-right {
+  display: flex; /* Use flex for layout */
+}
+
+.navbar-left li,
+.navbar-right li {
+  margin: 0 10px; /* Space between items */
+}
+
+.navbar-list a {
+  text-decoration: none; /* Remove underline from links */
+  color: #57635f; /* Link color */
+  font-weight: bold; /* Make links bold */
+  transition: color 0.3s, background-color 0.3s; /* Smooth transitions for color */
+  padding: 8px 12px; /* Padding for clickable area */
+  border-radius: 20px; /* Rounded corners for links */
+}
+
+.navbar-list a:hover {
+  color: #0056b3; /* Darker color on hover */
+  background-color: rgba(0, 123, 255, 0.1); /* Light blue background on hover */
+}
+
+/* Additional styles for the button */
+button {
+  background-color: transparent; /* Button background color */
+  border: 1px solid #57635f; /* Border color */
+  color: #57635f; /* Button text color */
+  padding: 5px 10px; /* Padding for the button */
+  border-radius: 20px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+button:hover {
+  background-color: rgba(0, 123, 255, 0.1); /* Light blue background on hover */
+}
