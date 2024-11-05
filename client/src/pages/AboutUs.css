@@ -1,0 +1,58 @@
+/* AboutUs.css */
+.about-container {
+  padding: 40px;
+  max-width: 800px;
+  margin: auto; /* Center the container */
+  background-color: #ffffff; /* White background for contrast */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Deeper shadow for depth */
+  text-align: center; /* Center text alignment */
+}
+
+.about-title {
+  font-size: 2.5em; /* Larger title */
+  margin-bottom: 20px; /* Space below title */
+  color: #0077b6; /* Accent color for title */
+}
+
+.about-subtitle {
+  font-size: 2em; /* Subtitle size */
+  margin-top: 20px; /* Space above subtitles */
+  color: #3a86ff; /* Different color for subtitles */
+}
+
+.about-description {
+  font-size: 1.2em; /* Regular text size */
+  line-height: 1.6; /* Line height for better readability */
+  margin-bottom: 15px; /* Space below paragraphs */
+  color: #333; /* Darker text color */
+}
+
+.about-features {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0; /* Remove default padding */
+  margin: 20px 0; /* Margin around the features list */
+}
+
+.about-features li {
+  margin: 10px 0; /* Space between feature items */
+  font-size: 1.1em; /* Feature text size */
+  color: #57635f; /* Slightly muted text color */
+}
+
+.cta-button {
+  background-color: #0077b6; /* Primary button color */
+  color: #fff; /* White text */
+  padding: 10px 20px; /* Button padding */
+  border: none; /* Remove border */
+  border-radius: 25px; /* Rounded corners */
+  font-size: 1.2em; /* Button text size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+  margin-top: 20px; /* Space above the button */
+}
+
+.cta-button:hover {
+  background-color: #005f8a; /* Darker shade on hover */
+  transform: translateY(-3px); /* Slight lift effect on hover */
+}

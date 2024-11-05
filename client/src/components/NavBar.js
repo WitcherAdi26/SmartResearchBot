@@ -32,9 +32,9 @@ function Navbar() {
         </div>
         <div className="navbar-right">
           <li>
-            <button onClick={toggleTheme}>
+            {/* <button onClick={toggleTheme}>
               {isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-            </button>
+            </button> */}
           </li>
           <li><Link to="/login">Login</Link></li>
           <li><Link to="/signup">Sign Up</Link></li>
