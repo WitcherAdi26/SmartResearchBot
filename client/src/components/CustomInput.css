@@ -1,89 +1,184 @@
-/* Home.css */
-.home-container {
+/* Container for the chat */
+.chat-container {
   display: flex;
-  flex-direction: column; /* Stack items vertically */
-  align-items: center; /* Center items horizontally */
-  padding: 20px; /* Add some padding to the container */
+  flex-direction: column;
+  height: 80vh;
+  width: 58%; /* Take 58% of the screen width */
+  max-width: none; /* Remove any max-width constraint */
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0; /* Ensure no margin */
+  position: absolute; /* Position it on the left side */
+  left: 3%; /* Add some space from the left side (10% of the screen width) */
+  top: 10vh; /* Set top position to leave space at the top */
+  padding: 10px;
 }
 
-.card-container {
+/* Scrollable chat area */
+.chat-box {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background-color: #f6f8fa; /* Light background for the chat area */
+  max-height: calc(80vh - 100px);
+  scroll-behavior: smooth; /* Smooth scroll effect */
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
-  width: 100%; /* Ensure full width for alignment */
-  max-width: 1200px; /* Set a max width if desired */
-  margin-top: 20px; /* Space between input and cards */
-  animation: slideIn 0.5s forwards;
+  flex-direction: column;
+  align-items: flex-start; /* Ensure all messages are aligned to the left by default */
 }
 
-/* Custom Input styles */
+/* General chat bubble styling */
+.chat-bubble {
+  display: inline-block;
+  max-width: 70%;
+  padding: 12px 18px;
+  margin: 8px 0;
+  border-radius: 16px;
+  font-size: 15px;
+  line-height: 1.4;
+  word-wrap: break-word; /* Allows breaking of long words */
+}
+
+/* User message styling (aligned to the right) */
+.user-message {
+  align-self: flex-end; /* Align user messages to the right */
+  background-color: #daf8cb; /* Light green bubble for user messages */
+  color: #333;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+/* Model (assistant) message styling (aligned to the left) */
+.model-message {
+  align-self: flex-start; /* Align model messages to the left */
+  background-color: #fff; /* White bubble for model messages */
+  color: #333;
+  border: 1px solid #ddd;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+/* Input area styling */
 .custom-input-container {
   display: flex;
   align-items: center;
-  background-color: #d1d1d1; /* Darker gray for the input background */
-  border-radius: 30px;
+  background-color: #ffffff;
+  border-top: 1px solid #ddd;
   padding: 0.5rem 1rem;
-  width: 50vw; /* 50% of the viewport width */
-  margin: 20px auto; /* Center input with margin from cards */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Initial subtle shadow */
-  transition: box-shadow 0.3s ease; /* Smooth transition for shadow */
-
-  /* Positioning */
-  position: fixed; /* Fixed position at bottom */
-  bottom: 60px; /* Adjust distance from bottom as needed */
-  left: 25vw; /* Starts 25% from the left of the viewport */
-  z-index: 1000; /* Ensures it stays on top */
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  justify-content: flex-end; /* Align the input area to the right */
+  box-shadow: none; /* Remove any box shadow */
 }
 
-.custom-input-container:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+/* Styles for the text input */
+.custom-input {
+  flex-grow: 1;
+  border: none; /* Remove the border */
+  outline: none; /* Remove the outline on focus */
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #f0f0f0; /* Light grey background */
+  font-size: 15px;
+  resize: none;
+  margin-right: 10px; /* Space between input and send button */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
 }
 
+.custom-input:focus {
+  background-color: #e6e6e6; /* Slightly darker grey on focus */
+}
+
+/* Placeholder styling */
+.custom-input::placeholder {
+  color: #888;
+}
+
+/* Icon styles */
 .attachment-icon {
   font-size: 1.2rem;
-  color: #5a5a5a; /* Slightly darker gray for the icon */
+  color: #5a5a5a;
   cursor: pointer;
   margin-right: 0.5rem;
 }
 
-.custom-input {
-  flex-grow: 1;
+/* Send button styling */
+.send-button {
+  background-color: #34b7f1;
+  color: #fff;
   border: none;
-  outline: none;
-  background-color: transparent;
-  color: #333; /* Darker text for readability */
+  padding: 10px 12px;
+  border-radius: 20px;
+  cursor: pointer;
   font-size: 1rem;
 }
 
-.custom-input::placeholder {
-  color: #7a7a7a; /* Darker gray placeholder */
-}
-
-.send-button {
-  background: none;
-  border: none;
-  color: #5a5a5a; /* Matches icon color */
-  font-size: 1.2rem;
-  cursor: pointer;
-  padding-left: 0.5rem;
-}
-
 .send-button:hover {
-  color: #005b99; /* Darker blue for hover effect */
+  background-color: #1a8cd8; /* Darker blue on hover */
 }
 
 .attachment-icon:hover {
-  color: #005b99; /* Matches send button hover */
+  color: #1a8cd8;
 }
 
-/* Slide-in animation */
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
+/* Blinking effect for file info */
+.pdf-info {
+  display: inline-block;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.blinking {
+  animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0% {
     opacity: 1;
-    transform: translateY(0);
   }
+  50% {
+    opacity: 0.3; /* Half transparency */
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Loading spinner */
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+  margin-right: 10px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.custom-input-container .loading-spinner span {
+  font-size: 14px;
+  color: #888;
+}
+
+/* For file input (hidden but clickable) */
+input[type="file"] {
+  display: none;
 }

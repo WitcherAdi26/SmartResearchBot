@@ -1,24 +1,43 @@
+.card-container {
+  display: flex;
+  margin-top: 30px;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  justify-content: flex-end; /* Aligns cards to the right side of the screen */
+  gap: 20px; /* Adds spacing between cards */
+  animation: slideIn 0.5s forwards;
+  width: 70%; /* Adjust the width as needed */
+  margin-left: auto;
+}
+.card-container {
+  display: flex;
+
+  margin-top: 35px; /* Reduced margin-top to decrease gap between components */
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  justify-content: flex-start; /* Aligns cards to the left side */
+  gap: 10px; /* Reduced gap between cards */
+  animation: slideIn 0.5s forwards;
+  width: 52%; /* Adjust the width as needed */
+
+  margin-left: auto;
+}
+
 .card {
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   border-radius: 8px;
-  padding: 20px;
-  margin-top: 350px;
-  margin: 10px;
+  padding: 25px;
+  margin-left: 0; /* Removed margin-left for better alignment */
+  margin-top: 10px; /* Reduced vertical margin between cards */
   cursor: pointer;
   transition: transform 0.2s;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow for larger cards */
+  width: calc(50% - 10px); /* Two cards per row */
+  height: 300px; /* Increased height */
+  box-sizing: border-box;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-}
-
-.card-container {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
-  animation: slideIn 0.5s forwards;
+  transform: translateY(-10px); /* Higher lift on hover for larger cards */
 }
 
 @keyframes slideIn {
