@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './CustomInput.css';
+import axios from 'axios';
 
 function CustomChat() {
   const [message, setMessage] = useState('');
@@ -15,10 +16,12 @@ function CustomChat() {
   }, [chat]);
 
   // Handle file selection and allow only PDFs
-  const handleFileChange = (event) => {
+  const handleFileChange = async (event) => {
     const file = event.target.files[0];
     if (file) {
       if (file.type === 'application/pdf') {
+        setIsLoading(true); // Show loading spinner
+
         // Stop blinking for all previous files
         setChat((prevChat) => 
           prevChat.map((item) => 
@@ -32,24 +35,42 @@ function CustomChat() {
           { text: `File selected: ${file.name}`, sender: 'user', fileType: 'pdf', fileName: file.name, blinking: true }
         ]);
 
-        // Simulate a model response after selecting a PDF file
-        setTimeout(() => {
-          setChat((prevChat) => [
-            ...prevChat,
-            { text: 'Hello', sender: 'model' } // Example model response
-          ]);
+        // Make Requet here    
+        let responseMessage="Something went wrong!";
+        try {
+          const formData = new FormData();
+          formData.append("files", file); // 'files' matches the backend parameter name
+    
+          // const userId = 1; // Replace with the actual user ID
+          const response = await axios.post(' http://127.0.0.1:8000/upload/1', formData, {
+              headers: {
+                  'Content-Type': 'multipart/form-data',
+                  'Accept':'application/json'
+              }
+          });
 
-          // Stop blinking after receiving the response
-          setChat((prevChat) => 
-            prevChat.map((item) => 
-              item.fileType === 'pdf' && item.fileName === file.name ? { ...item, blinking: false } : item
-            )
-          );
+          alert("File Uploaded Succesfully.");
+          if(response.status===200)responseMessage="What do you wish to know?";
+        } catch (error) {
+          console.error("Error uploading file:", error);
+          responseMessage="Error uploading files.";
+          alert("Failed to upload file. Please try again.");
+        }
 
-          setIsLoading(false); // Hide loading spinner after 5 seconds
-        }, 5000); // Simulate 5 seconds delay for response
+        setChat((prevChat) => [
+          ...prevChat,
+          { text: responseMessage, sender: 'model' } // Example model response
+        ]);
 
-        setIsLoading(true); // Show loading spinner
+        // Stop blinking after receiving the response
+        setChat((prevChat) => 
+          prevChat.map((item) => 
+            item.fileType === 'pdf' && item.fileName === file.name ? { ...item, blinking: false } : item
+          )
+        );
+
+        setIsLoading(false); // Hide loading spinner after 5 seconds
+        // }, 5000); // Simulate 5 seconds delay for response
       } else {
         setChat([...chat, { text: 'Only PDF files are allowed.', sender: 'model' }]);
       }
@@ -57,18 +78,41 @@ function CustomChat() {
   };
 
   // Handle sending a message
-  const handleSendMessage = () => {
+  const handleSendMessage = async() => {
     if (message.trim()) {
       setChat([...chat, { text: message, sender: 'user' }]);
       setMessage(''); // Clear input after sending
 
       // Simulate a model response with a short delay
-      setTimeout(() => {
-        setChat((prevChat) => [
-          ...prevChat,
-          { text: 'This is an auto-generated response.', sender: 'model' }
-        ]);
-      }, 500);
+
+      // Make request here
+      let responseMessage="";
+      try {
+        const response = await axios.post('http://127.0.0.1:8000/ask/1', {
+          "question": message
+        }, {
+            headers: {
+                'Content-Type' : 'application/json',
+                'Accept' : 'application/json'
+            }
+        });
+
+        console.log(response.data);
+        console.log(response.data.response.result);
+        
+        if(response.status===200)responseMessage=response.data.response.result;
+      } catch (error) {
+        console.log("Error Sending query : ",error);
+        responseMessage="OOPs! Something went wrong.";
+        alert("There was error sending query. Please retry now or sometime later.");
+      }
+
+      // setTimeout(() => {
+      setChat((prevChat) => [
+        ...prevChat,
+        { text: responseMessage, sender: 'model' }
+      ]);
+      // }, 500);
     }
   };
 
